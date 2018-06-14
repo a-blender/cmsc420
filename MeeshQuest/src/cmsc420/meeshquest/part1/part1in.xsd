@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- definition of simple elements -->
+  <xs:simpleType name="colorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="red"/>
+      <xs:enumeration value="green"/>
+      <xs:enumeration value="blue"/>
+      <xs:enumeration value="yellow"/>
+      <xs:enumeration value="purple"/>
+      <xs:enumeration value="orange"/>
+      <xs:enumeration value="black"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sortType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="name"/>
+      <xs:enumeration value="coordinate"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="cityName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[_a-zA-Z][_a-zA-Z0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fileName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\w_.]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- definition of attributes -->
+  <xs:attributeGroup name="commandAtts">
+    <xs:attribute name="spatialWidth" type="xs:integer"  use="required"/>
+    <xs:attribute name="spatialHeight" type="xs:integer"  use="required"/>
+  </xs:attributeGroup>
+
+  <!-- definition of complex types -->
+  <xs:complexType name="emptyType"/>
+
+  <xs:complexType name="nameType">
+    <xs:attribute name="name" type="cityName" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="cityType">
+    <xs:attribute name="name" type="cityName" use="required"/>
+    <xs:attribute name="x" type="xs:integer" use="required"/>
+    <xs:attribute name="y" type="xs:integer" use="required"/>
+    <xs:attribute name="radius" type="xs:integer" use="required"/>
+    <xs:attribute name="color" type="colorType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="roadType">
+    <xs:attribute name="start" type="cityName" use="required"/>
+    <xs:attribute name="end" type="cityName" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="listType">
+    <xs:attribute name="sortBy" type="sortType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="nearestType">
+    <xs:attribute name="x" type="xs:integer" use="required"/>
+    <xs:attribute name="y" type="xs:integer" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="rangeType">
+    <xs:attribute name="x" type="xs:integer" use="required"/>
+    <xs:attribute name="y" type="xs:integer" use="required"/>
+    <xs:attribute name="radius" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="saveMap" type="fileName" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="saveMapType">
+    <xs:attribute name="name" type="fileName" use="required"/>
+  </xs:complexType>
+  
+  <!-- definition of elements -->
+  <xs:element name="commands">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="createCity" type="cityType"/>
+          <xs:element name="deleteCity" type="nameType"/>
+          <xs:element name="clearAll" type="emptyType"/>
+          <xs:element name="listCities" type="listType"/>
+          <xs:element name="mapCity" type="nameType"/>
+          <xs:element name="unmapCity" type="nameType"/>
+          <xs:element name="printPRQuadtree" type="emptyType"/>
+          <xs:element name="rangeCities" type="rangeType"/>
+          <xs:element name="nearestCity" type="nearestType"/>
+          <xs:element name="saveMap" type="saveMapType"/>
+	  <xs:element name="printAvlTree" type="emptyType"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="commandAtts"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

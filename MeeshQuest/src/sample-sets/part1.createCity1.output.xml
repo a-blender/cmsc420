@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="S"/>
+      <x value="2"/>
+      <y value="1"/>
+      <radius value="1"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="T"/>
+      <x value="4"/>
+      <y value="4"/>
+      <radius value="1"/>
+      <color value="orange"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Y"/>
+      <x value="6"/>
+      <y value="3"/>
+      <radius value="1"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="X"/>
+      <x value="4"/>
+      <y value="0"/>
+      <radius value="1"/>
+      <color value="purple"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Z"/>
+      <x value="2"/>
+      <y value="4"/>
+      <radius value="1"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A"/>
+      <x value="3"/>
+      <y value="2"/>
+      <radius value="24"/>
+      <color value="green"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="listCities"/>
+    <parameters>
+      <sortBy value="name"/>
+    </parameters>
+    <output>
+      <cityList>
+        <city color="black" name="Z" radius="1" x="2" y="4"/>
+        <city color="blue" name="Y" radius="1" x="6" y="3"/>
+        <city color="purple" name="X" radius="1" x="4" y="0"/>
+        <city color="orange" name="T" radius="1" x="4" y="4"/>
+        <city color="red" name="S" radius="1" x="2" y="1"/>
+        <city color="green" name="A" radius="24" x="3" y="2"/>
+      </cityList>
+    </output>
+  </success>
+</results>
