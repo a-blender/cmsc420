@@ -11,11 +11,11 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import cmsc420.xml.XmlUtility;
-import sun.reflect.generics.tree.Tree;
 
 import java.awt.geom.Point2D;
+import java.util.HashSet;
 import java.util.TreeMap;
-import java.io.File;
+import java.util.*;
 
 /**
  * MeeshQuest main class for the google maps project
@@ -25,7 +25,7 @@ public class MeeshQuest {
 
     /**
      * Dictionary 1
-     * maps city names -> city objects
+     * Maps city names -> city objects
      */
     private static TreeMap<String, City> map1 =
             new TreeMap<String, City>(new CityNameComparator());
@@ -33,19 +33,33 @@ public class MeeshQuest {
 
     /**
      * Dictionary 2
-     * maps city coordinates -> city objects
+     * Maps city coordinates -> city objects
      */
     private static TreeMap<Point2D.Float, City> map2 =
             new TreeMap<Point2D.Float, City>(new CityCoordinateComparator());
 
 
     /**
+     * PR QuadTree
+     * Tree representation of city objects on a cartesian plane
+     */
+    private static PRQuadTree prqt = new PRQuadTree();
+
+
+    /**
+     * Mapped set
+     * Hash set of city objects that have already been mapped
+     */
+    private static Set mapped = new HashSet();
+
+
+    /**
      * Creates a city object and adds it to both dictionaries
-     * @param name=city name
-     * @param x=x-coordinate of city
-     * @param y=y-coordinate of city
-     * @param radius=radius of city point
-     * @param color=color of city point
+     * @param name = city name
+     * @param x = x-coordinate of city
+     * @param y = y-coordinate of city
+     * @param radius = radius of city point
+     * @param color = color of city point
      * @return true or false
      */
     public static Element createCity(Document results, String name, int x, int y,
@@ -110,6 +124,66 @@ public class MeeshQuest {
     }
 
 
+    /**
+     * Adds city object to the PR QuadTree
+     * @param results
+     * @param city
+     * @return
+     */
+    public static Element mapCity(Document results, City city) {
+
+        Element node = null;
+
+        if (mapped.contains(city)) {
+
+            // TO DO: generate an error
+        }
+        else {
+            // TO DO: fix this line, not the right starting params
+            prqt.insert(city, new Point2D.Float(0, 0), 256, 0);
+            mapped.add(city);
+        }
+
+        return node;
+    }
+
+
+    /**
+     * Removes a city object from the PR QuadTree
+     * @param results
+     * @param city
+     * @return
+     */
+    public static Element unmapCity(Document results, City city) {
+
+        /*
+        TO DO: check if the city is in the "mapped" arraylist
+        if yes -> remove city from pr quadtree, remove city from "mapped" arraylist
+        if no -> generate an error
+         */
+
+        return null;
+    }
+
+
+    /**
+     * Removes city from both dictionaries and the PR QuadTree
+     * @param results
+     * @param city
+     * @return
+     */
+    public static Element deleteCity(Document results, City city) {
+
+        Element node = null;
+        unmapCity(results, city);
+        mapped.remove(city);
+        map1.remove(city);
+        map2.remove(city);
+
+        // TO DO: build the xml result for deleteCity()
+
+        return node;
+    }
 
 
     /**
@@ -181,49 +255,15 @@ public class MeeshQuest {
     }
 
 
-    public static Element mapCity(Document results, City city) {
-
-        /*
-        TO DO: check if city is in the "mapped" arraylist
-        if yes -> generate an error
-        if no -> add city to the pr quadtree, add city to the "mapped" arraylist
-        return xml result
-         */
-
-        return null;
-    }
-
-
-    public static Element unmapCity(Document results, City city) {
-
-        /*
-        TO DO: check if the city is in the "mapped" arraylist
-        if yes -> remove city from pr quadtree, remove city from "mapped" arraylist
-        if no -> generate an error
-         */
-
-        return null;
-    }
-
-
-    public static Element deleteCity(Document results, City city) {
-
-        /*
-        TO DO: call unmapCity() to remove city from the pr quadtree
-        remove city from both dictionaries
-        return xml result
-         */
-
-        return null;
-    }
-
-
     /**
-     * Clears all mappings from both dictionaries
+     * Clears all mappings from both dictionaries and the PR QuadTree
      */
     public static Element clearAll(Document results) {
         map1.clear();
         map2.clear();
+        prqt = new PRQuadTree();
+
+        // TO DO: double-check that this xml output is correct
 
         Element node = results.createElement("success");
 
@@ -236,10 +276,6 @@ public class MeeshQuest {
 
         Element output = results.createElement("output");
         node.appendChild(output);
-
-        /*
-        TO DO: remove all nodes from the pr quadtree
-         */
 
         return node;
     }
@@ -270,7 +306,7 @@ public class MeeshQuest {
                 
         			/* TODO: Process your commandNode here */
 
-                    /* student code for part 0 */
+                    // createCity command
                     if(commandNode.getNodeName().equals("createCity")) {
 
                         String name = commandNode.getAttribute("name");
@@ -288,16 +324,39 @@ public class MeeshQuest {
                         }
 
                     }
-                    else if(commandNode.getNodeName().equals("clearAll")) {
-                        root.appendChild(clearAll(results));
+
+                    // mapCity command
+                    else if(commandNode.getNodeName().equals("mapCity")) {
+
+                        // TO DO: mapCity()
                     }
+
+
+                    // unmapCity command
+                    else if(commandNode.getNodeName().equals("unmapCity")) {
+
+                        // TO DO: unmapCity()
+                    }
+
+                    // deleteCity command
+                    else if(commandNode.getNodeName().equals("deleteCity")) {
+
+                        // TO DO: deleteCity()
+                    }
+
+                    // listCities commmand
                     else if (commandNode.getNodeName().equals("listCities")) {
 
                         String sort = commandNode.getAttribute("sortBy");
-
-
                         root.appendChild(listCities(results, sort));
                     }
+
+                    // clearAll command
+                    else if(commandNode.getNodeName().equals("clearAll")) {
+                        root.appendChild(clearAll(results));
+                    }
+
+
         		}
         	}
 
