@@ -36,7 +36,7 @@ public class PRQuadTree {
      * @param city = City object
      * @return
      */
-    public PRQTNode insert(City city, Point2D.Float center, int dim, int level) {
+    public PRQTNode insert(City city, Point2D.Float center, int dim) {
 
         /*
         What happens here?
