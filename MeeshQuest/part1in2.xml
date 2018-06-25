@@ -17,9 +17,9 @@ spatialHeight="256"
     <mapCity name = "C"/>
     <mapCity name = "D"/>
     <mapCity name = "E"/>
-    <saveMap name="part1in2_map1"/>
+    <mapCity name = "F"/>
 
-    <deleteCity name="BLAH"/>
-    <saveMap name="part1in2_map2"/>
+    <saveMap name="part1in2_map"/>
+    <printPRQuadtree/>
 
 </commands>
