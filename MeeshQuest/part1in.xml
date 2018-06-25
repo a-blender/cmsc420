@@ -1,13 +1,28 @@
 <commands
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="src/cmsc420/meeshquest/part1/part1in.xsd"
-spatialWidth="512"
-spatialHeight="512">
-    <createCity name="Baltimore" y="39" x="76" radius="5" color="black"/>
-    <createCity name="Baltimore" x="81" y="47" radius="5"  color="black"/>
-    <createCity name="Atlanta" x="84" y="33" radius="5"  color="black"/>
-    <createCity name="Los_Angeles" x="118" y="33" radius="5"  color="black"/>
-    <createCity name="Miami" x="80" y="25" radius="5"  color="black"/>
-    <createCity name="Boston" x="71" y="42" radius="50"  color="black"/>
-    <listCities sortBy="coordinate"/>
+xsi:noNamespaceSchemaLocation="part1in.xsd"
+spatialWidth="256"
+spatialHeight="256"
+>
+<createCity name="A" x="100" y="150" radius="1" color="black"/>
+<createCity name="B" x="150" y="150" radius="1"  color="black"/>
+<createCity name="C" x="100" y="100" radius="1"  color="black"/>
+<createCity name="D" x="150" y="100" radius="1"  color="black"/>
+<createCity name="E" x="200" y="200" radius="1"  color="black"/>
+
+<createCity name="F" x="31" y="31" radius="1"  color="black"/>
+<createCity name="G" x="18" y="3" radius="1"  color="black"/>
+<createCity name="H" x="20" y="7" radius="1"  color="black"/>
+<createCity name="I" x="13" y="29" radius="1"  color="black"/>
+<createCity name="J" x="13" y="31" radius="1"  color="black"/>
+<createCity name="K" x="21" y="22" radius="1"  color="black"/>
+<listCities sortBy="name"/>
+
+<mapCity name = "A"/>
+<mapCity name = "B"/>
+    <mapCity name = "C"/>
+    <mapCity name = "D"/>
+
+    <saveMap name="part1in_map"/>
+
 </commands>
