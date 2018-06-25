@@ -1,6 +1,8 @@
 package cmsc420.meeshquest.part1;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import java.util.Map;
 
 /**
  * Helper class to build XML documents
@@ -62,4 +64,12 @@ public class XMLBuilder {
         return doc.createElement(tagName);
     }
 
+
+    public Element generateTag(String tagName, Map<String,String> attributes) {
+        Element main = doc.createElement(tagName);
+        for (Map.Entry<String,String> entry : attributes.entrySet()) {
+            main.setAttribute(entry.getKey(), entry.getValue());
+        }
+        return main;
+    }
 }

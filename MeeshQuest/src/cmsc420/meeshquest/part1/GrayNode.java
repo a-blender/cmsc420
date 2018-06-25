@@ -75,63 +75,107 @@ public class GrayNode extends PRQTNode {
         3. Ex: children[1] = children[1].insert(city)
          */
 
-        /*
-        Where city = (x,y) and gray node origin = (a, b)
-        - quadrant 1: x < a , y >= b
-        - quadrant 2: x >= a , y >= b
-        - quadrant 3: x < a , y < b
-        - quadrant 4: x >= a , y < b
-         */
-
-        // Find out what quadrant the city to be added intersects
-
-        PRQTNode gray_node = null;      // gray node child to return
         float new_x, new_y;             // (x, y) values of the node to return
         Point2D.Float new_center;       // center point of the node to return
         int new_dim = dim/2;            // dimension of the node to return
 
-        if (city.x < center.x && city.y >= center.y) {
+        float city_x = city.get_x();
+        float city_y = city.get_y();
+        float center_x = center.x;
+        float center_y = center.y;
+
+        if (city_x < center_x && city_y >= center_y) {
 
             // quadrant 1
             new_x = center.x - center.x/2;
             new_y = center.y + center.y/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[0] = children[0].insert(city, new_center, new_dim);
-            gray_node = this.children[0];
         }
-        else if (city.x >= center.x && city.y >= center.y) {
+        else if (city_x >= center_x && city_y >= center_y) {
 
             // quadrant 2
             new_x = center.x + center.x/2;
             new_y = center.y + center.y/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[1] = children[1].insert(city, new_center, new_dim);
-            gray_node = this.children[1];
         }
-        else if (city.x < center.x && city.y < center.y) {
+        else if (city_x < center_x && city_y < center_y) {
 
             // quadrant 3
             new_x = center.x - center.x/2;
             new_y = center.y - center.y/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[2] = children[2].insert(city, new_center, new_dim);
-            gray_node = this.children[2];
         }
-        else if (city.x >= center.x && city.y < center.y) {
+        else if (city_x >= center_x && city_y < center_y) {
 
             // quadrant 4
             new_x = center.x + center.x/2;
             new_y = center.y - center.y/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[3] = children[3].insert(city, new_center, new_dim);
-            gray_node = this.children[3];
         }
 
-        // return the child node that contains the new city
+        // return the gray node with the new city added
 
-        return gray_node;
+        return this;
     }
 
+
+    /**
+     * Deletes a city from the quadtree
+     * GrayNode - recursively "remove" city from the right child node
+     * @param city
+     * @return
+     */
+    public PRQTNode delete(City city) {
+
+        float city_x = city.get_x();
+        float city_y = city.get_y();
+        float center_x = this.getCenter().x;
+        float center_y = this.getCenter().y;
+
+        /*
+        Delete city from the correct child node
+        Code below - check quadrants 1-4 (in that order)
+         */
+
+        if (city_x < center_x && city_y >= center_y) {
+            this.children[0] = children[0].delete(city);
+        }
+        else if (city_x >= center_x && city_y >= center_y) {
+            this.children[1] = children[1].delete(city);
+        }
+        else if (city_x < center_x && city_y < center_y) {
+            this.children[2] = children[2].delete(city);
+        }
+        else if (city_x >= center_x && city_y < center_y) {
+            this.children[3] = children[3].delete(city);
+        }
+
+        // check to see if gray node can be condensed
+
+        boolean condense = true;
+        for (PRQTNode child_node : this.getChildren()) {
+            if (child_node instanceof BlackNode) {
+                condense = false;
+            }
+        }
+        if (condense) {
+            return new WhiteNode();
+        }
+
+        // if gray node can't be condensed, return the gray node
+
+        return this;
+    }
+
+
+    /**
+     * Returns a string representation of the GrayNode class
+     * @return
+     */
     @Override
     public String toString() {
         return "GrayNode{" +

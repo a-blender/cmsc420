@@ -25,15 +25,15 @@ public class BlackNode extends PRQTNode {
     /***
      * Returns the city object associated with the node
      */
-    public City getValue() {
+    public City getCity() {
 
         return this.city;
     }
 
 
     /**
-     * Inserts a node at a BlackNode in the PR QuadTree
-     * Basically: create a GrayNode and re-insert both BlackNodes into the correct partitions
+     * Inserts a city into the quadtree
+     * BlackNode - create a gray node and re-insert both cities into child nodes
      * @param city
      * @param center
      * @param dim
@@ -50,8 +50,8 @@ public class BlackNode extends PRQTNode {
 
         // Create an array of white nodes as children for the gray node
 
-        PRQTNode[] child_nodes = null;
-        for (int x = 0; x < child_nodes.length; x++) {
+        PRQTNode[] child_nodes = new PRQTNode[4];
+        for (int x = 0; x <= 3; x++) {
             child_nodes[x] = new WhiteNode();
         }
 
@@ -63,7 +63,23 @@ public class BlackNode extends PRQTNode {
         // Insert the new black node
 
         gray_node.insert(this.city, center, dim);
-        return gray_node.insert(city, center, dim);
+        gray_node.insert(city, center, dim);
+        return gray_node;
+    }
+
+
+    /**
+     * Deletes a city from the quadtree
+     * BlackNode - returns white node to remove city, or returns black node
+     * @param city
+     * @return
+     */
+    public PRQTNode delete(City city) {
+
+        if (this.getCity().equals(city)) {
+            return new WhiteNode();
+        }
+        else return this;
     }
 
 

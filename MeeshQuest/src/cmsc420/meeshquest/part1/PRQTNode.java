@@ -3,7 +3,7 @@ import java.awt.geom.Point2D;
 
 /**
  * Abstract node class for the PR QuadTree data structure
- * think of it as: default functions
+ * think of it as: default interface functions
  */
 public abstract class PRQTNode {
 
@@ -19,7 +19,7 @@ public abstract class PRQTNode {
 
 
     /**
-     * Inserts a PRQTNode (white, black, or gray) into the quadtree
+     * Recursively inserts a city into the quadtree
      * @param city
      * @param center
      * @param dim
@@ -32,11 +32,11 @@ public abstract class PRQTNode {
 
 
     /**
-     * Deletes a PRQTNode (white, gray, or black) from the quadtree
+     * Recursively deletes a city from the quadtree
      * @param city
      * @return
      */
-    public static WhiteNode delete(City city, Point2D.Float origin, int dim) {
+    public PRQTNode delete(City city) {
 
         return new WhiteNode();
     }

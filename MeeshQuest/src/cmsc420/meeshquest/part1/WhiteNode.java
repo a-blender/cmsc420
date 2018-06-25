@@ -25,8 +25,8 @@ public class WhiteNode extends PRQTNode {
 
 
     /**
-     * Inserts a node at a WhiteNode in the PR Quadtree
-     * Basically: add a city to the WhiteNode by returning a BlackNode
+     * Inserts a city into the quadtree
+     * WhiteNode - adds a city to the white node by returning a black node
      * @param city
      * @param center
      * @param dim
@@ -35,6 +35,26 @@ public class WhiteNode extends PRQTNode {
     public PRQTNode insert(City city, Point2D.Float center, int dim) {
 
         return new BlackNode(city);
+    }
+
+
+    /**
+     *
+     * @param city
+     * @param center
+     * @param dim
+     * @return
+     */
+
+    /**
+     * Deletes a city from the quadtree
+     * WhiteNode - nothing to delete, so just return a white node
+     * @param city
+     * @return
+     */
+    public PRQTNode delete(City city) {
+
+        return new WhiteNode();
     }
 
 

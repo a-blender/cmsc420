@@ -9,15 +9,19 @@ import java.awt.geom.Point2D;
 public class PRQuadTree {
 
 
-    private PRQTNode root = null;
+    private PRQTNode root;
+    private int width;
+    private int height;
 
 
     /**
      * Constructs the PR QuadTree spatial data structure
      */
-    public PRQuadTree() {
+    public PRQuadTree(int width, int height) {
 
         root = new WhiteNode();
+        this.width = width;
+        this.height = height;
     }
 
 
@@ -30,21 +34,55 @@ public class PRQuadTree {
         return this.root;
     }
 
+    /**
+     * Returns the spatial width of the quadtree
+     * @return
+     */
+    public int getWidth() {
+        return this.width;
+    }
+
 
     /**
-     * Inserts a city point into the quadtree
-     * @param city = City object
+     * Returns the spatial height of the quadtree
+     * @return
+     */
+    public int getHeight() {
+        return this.height;
+    }
+
+
+    /**
+     * Clears all nodes in the entire quadtree
+     */
+    public void clear() {
+        this.root = null;
+    }
+
+
+    /**
+     * Inserts a city into the quadtree (wrapper function)
+     * @param city
+     * @param center
+     * @param dim
      * @return
      */
     public PRQTNode insert(City city, Point2D.Float center, int dim) {
 
-        /*
-        What happens here?
-        - white node: inserts the city into the white node -> black node
-        - black node: creates a gray node and inserts the city into the correct child node
-        - gray node: inserts the city into the correct child node
-         */
-        return this.root.insert(city, center, dim);
+        this.root = root.insert(city, center, dim);
+        return root;
+    }
+
+
+    /**
+     * Deletes a city from the quadtree (wrapper function)
+     * @param city
+     * @return
+     */
+    public PRQTNode delete(City city) {
+
+        this.root = root.delete(city);
+        return root;
     }
 
 }
