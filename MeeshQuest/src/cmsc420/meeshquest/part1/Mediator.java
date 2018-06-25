@@ -90,10 +90,10 @@ public class Mediator {
                 break;
             case ("unmapCity"):
                 node = unmapCity(commandNode);
-                break; /*
+                break;
             case ("printPRQuadTree"):
                 node = printPRQuadTree(commandNode);
-                break; */
+                break;
             case ("saveMap"):
                 node = saveMap(commandNode);
                 break; /*
@@ -386,22 +386,21 @@ public class Mediator {
      */
     public Element unmapCity(Element commandNode) {
 
-        // TO DO: check this function for accuracy again
-
         Element status;
         String city_name = commandNode.getAttribute("name");
         City city;
+        boolean no_error = true;
 
         if (!map1.containsKey(city_name)) {
             status = xml_file.generateErrorTag("nameNotInDictionary");
+            no_error = false;
         }
         else if (!mapped.contains(city_name)) {
             status = xml_file.generateErrorTag("cityNotMapped");
+            no_error = false;
         }
         else {
-
             // delete city from the pr quadtree
-
             city = map1.get(city_name);
             prqt.delete(city);
             status = xml_file.generateSuccessTag();
@@ -413,8 +412,11 @@ public class Mediator {
         status.appendChild(params);
         Element name_node = xml_file.generateParameterTag("name", city_name);
         params.appendChild(name_node);
-        Element output = xml_file.generateOutputTag();
-        status.appendChild(output);
+
+        if (no_error) {
+            Element output = xml_file.generateOutputTag();
+            status.appendChild(output);
+        }
         return status;
     }
 
@@ -425,7 +427,70 @@ public class Mediator {
      * @return
      */
     public Element printPRQuadTree(Element commandNode) {
-        return null;
+
+        Element status;
+
+        status = xml_file.generateSuccessTag();
+        Element command = xml_file.generateCommandTag(commandNode.getTagName());
+        status.appendChild(command);
+        Element params = xml_file.generateTag("parameters");
+        status.appendChild(params);
+
+        Element output = xml_file.generateOutputTag();
+
+
+        // TO DO: fix the printHelper
+
+
+        Element results = printHelper(prqt.getRoot(), output);
+
+        status.appendChild(results);
+        return status;
+    }
+
+
+    public Element printHelper(PRQTNode root, Element node) {
+
+
+        // TO DO: fix recusion here, it's giving null pointers
+
+
+        Element new_node = null;
+
+        if (root instanceof WhiteNode) {
+            new_node = xml_file.generateTag("white");
+            node.appendChild(new_node);
+
+        }
+        else if (root instanceof BlackNode) {
+
+            City city = ((BlackNode) root).getCity();
+            HashMap< String,String> attributes = new HashMap< String,String>();
+            attributes.put("name", city.getName());
+            attributes.put("x", Integer.toString((int) city.get_x()));
+            attributes.put("y", Integer.toString((int) city.get_y()));
+
+            new_node = xml_file.generateTag("black", attributes);
+            node.appendChild(new_node);
+        }
+        else if (root instanceof GrayNode) {
+
+            float gray_x = ((GrayNode) root).getCenter().x;
+            float gray_y = ((GrayNode) root).getCenter().y;
+            HashMap< String,String> attributes = new HashMap< String,String>();
+            attributes.put("x", Integer.toString((int) gray_x));
+            attributes.put("y", Integer.toString((int) gray_y));
+
+            new_node = xml_file.generateTag("gray", attributes);
+            node.appendChild(new_node);
+
+            // recursively print child nodes
+
+            for (PRQTNode child : ((GrayNode) root).getChildren()) {
+                printHelper(child, new_node);
+            }
+        }
+        return new_node;
     }
 
 
@@ -516,9 +581,6 @@ public class Mediator {
             }
         }
     }
-
-
-
 
 
     /**
