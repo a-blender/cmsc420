@@ -1,16 +1,15 @@
 package cmsc420.meeshquest.part1;
 
 import java.io.IOException;
+import java.io.File;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import cmsc420.drawing.CanvasPlus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import cmsc420.xml.XmlUtility;
-import java.io.File;
 
 /**
  * MeeshQuest main class for the google maps project
@@ -26,7 +25,7 @@ public class MeeshQuest {
     	Document results = null;
 
         try {
-        	//Document doc = XmlUtility.validateNoNamespace(System.in);
+            //Document doc = XmlUtility.validateNoNamespace(System.in);
             Document doc = XmlUtility.validateNoNamespace(new File("part1in2.xml"));
             results = XmlUtility.getDocumentBuilder().newDocument();
         
@@ -34,7 +33,7 @@ public class MeeshQuest {
             final NodeList nl = commandNode.getChildNodes();
 
             int width = Integer.parseInt(commandNode.getAttribute("spatialWidth"));
-            int height = Integer.parseInt(commandNode.getAttribute("spatialWidth"));
+            int height = Integer.parseInt(commandNode.getAttribute("spatialHeight"));
             Mediator mediator = new Mediator(results, width, height);
 
             for (int i = 0; i < nl.getLength(); i++) {
@@ -49,6 +48,12 @@ public class MeeshQuest {
         } catch (SAXException | IOException | ParserConfigurationException e) {
         	
         	/* TODO: Process fatal error here */
+            try {
+                results = XmlUtility.getDocumentBuilder().newDocument();
+            }
+            catch (ParserConfigurationException e1) {
+                System.out.println("parser error");
+            }
             Element error = results.createElement("fatalError");
             results.appendChild(error);
         	

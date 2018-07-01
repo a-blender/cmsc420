@@ -11,6 +11,8 @@ import cmsc420.drawing.CanvasPlus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import java.util.HashMap;
+import java.io.File;
+import java.util.PriorityQueue;
 
 /**
  * Mediator class to parse commands from input xml file
@@ -23,9 +25,10 @@ public class Mediator {
     private TreeMap<String, City> map1;         // Dictionary 1
     private TreeMap<Point2D.Float, City> map2;  // Dictionary 2
     private PRQuadTree prqt;                    // PR QuadTree
-    private Set mapped;                         // Mapped hash set
+    private Set<String> mapped;                 // Mapped hash set
     private Element root;                       // Output xml root node
     private XMLBuilder xml_file;                // Output xml builder
+    private PriorityQueue<Distance> pq;         // Priority queue for quadtree
 
     /**
      * Constructs an instance of the mediator class
@@ -39,7 +42,7 @@ public class Mediator {
         this.map1 = new TreeMap<String, City>(new CityNameComparator());
         this.map2 = new TreeMap<Point2D.Float, City>(new CityCoordinateComparator());
         this.prqt = new PRQuadTree(width, height);
-        this.mapped = new HashSet();
+        this.mapped = new HashSet<String>();
 
         this.xml_file = new XMLBuilder(results);
         root = results.createElement("results");
@@ -91,18 +94,18 @@ public class Mediator {
             case ("unmapCity"):
                 node = unmapCity(commandNode);
                 break;
-            case ("printPRQuadTree"):
-                node = printPRQuadTree(commandNode);
+            case ("printPRQuadtree"):
+                node = printPRQuadtree(commandNode);
                 break;
             case ("saveMap"):
                 node = saveMap(commandNode);
-                break; /*
+                break;
             case ("rangeCities"):
                 node = rangeCities(commandNode);
                 break;
             case ("nearestCity"):
                 node = nearestCity(commandNode);
-                break; */
+                break;
         }
         xml_file.appendToDocument(node);
     }
@@ -426,40 +429,42 @@ public class Mediator {
      * @param commandNode
      * @return
      */
-    public Element printPRQuadTree(Element commandNode) {
+    public Element printPRQuadtree(Element commandNode) {
 
         Element status;
+        boolean no_error = true;
 
-        status = xml_file.generateSuccessTag();
+        if (prqt.getRoot() instanceof WhiteNode) {
+            status = xml_file.generateErrorTag("mapIsEmpty");
+            no_error = false;
+        }
+        else {
+            status = xml_file.generateSuccessTag();
+        }
+
         Element command = xml_file.generateCommandTag(commandNode.getTagName());
         status.appendChild(command);
         Element params = xml_file.generateTag("parameters");
         status.appendChild(params);
 
-        Element output = xml_file.generateOutputTag();
-
-
-        // TO DO: fix the printHelper
-
-
-        Element results = printHelper(prqt.getRoot(), output);
-
-        status.appendChild(results);
+        if (no_error) {
+            Element output = xml_file.generateOutputTag();
+            Element quadtree = xml_file.generateTag("quadtree");
+            Element results = printHelper(prqt.getRoot(), quadtree);
+            output.appendChild(results);
+            status.appendChild(output);
+        }
         return status;
     }
 
 
-    public Element printHelper(PRQTNode root, Element node) {
-
-
-        // TO DO: fix recusion here, it's giving null pointers
-
+    public Element printHelper(PRQTNode root, Element output) {
 
         Element new_node = null;
 
         if (root instanceof WhiteNode) {
             new_node = xml_file.generateTag("white");
-            node.appendChild(new_node);
+            output.appendChild(new_node);
 
         }
         else if (root instanceof BlackNode) {
@@ -471,7 +476,7 @@ public class Mediator {
             attributes.put("y", Integer.toString((int) city.get_y()));
 
             new_node = xml_file.generateTag("black", attributes);
-            node.appendChild(new_node);
+            output.appendChild(new_node);
         }
         else if (root instanceof GrayNode) {
 
@@ -482,7 +487,7 @@ public class Mediator {
             attributes.put("y", Integer.toString((int) gray_y));
 
             new_node = xml_file.generateTag("gray", attributes);
-            node.appendChild(new_node);
+            output.appendChild(new_node);
 
             // recursively print child nodes
 
@@ -490,7 +495,7 @@ public class Mediator {
                 printHelper(child, new_node);
             }
         }
-        return new_node;
+        return output;
     }
 
 
@@ -585,11 +590,101 @@ public class Mediator {
 
     /**
      * Lists the cities present within a radius of (x,y)
+     * Parameters: x, y, radius, saveMap (optional)
      * @param commandNode
      * @return
      */
     public Element rangeCities(Element commandNode) {
-        return null;
+
+        System.out.println("HERE");
+        Element status, output = null;
+        boolean no_error = true;
+
+        String x_param = commandNode.getAttribute("x");
+        String y_param = commandNode.getAttribute("y");
+        String radius_param = commandNode.getAttribute("radius");
+        String file_param;
+        File file;
+
+        if (commandNode.hasAttribute("saveMap")) {
+            file_param = commandNode.getAttribute("saveMap");
+            file = new File(file_param);
+
+            // TO DO: finish this
+        }
+
+        // error if radius = 0, no city exists, or rangeCities() returns none
+        int x = Integer.parseInt(x_param);
+        int y = Integer.parseInt(y_param);
+        int radius = Integer.parseInt(radius_param);
+        Point2D.Float coords = new Point2D.Float(x, y);
+
+        if (radius == 0 || !map2.containsKey(coords)) {
+            status = xml_file.generateErrorTag("noCitiesExistInRange");
+            no_error = false;
+            System.out.println("1");
+        }
+        else {
+
+
+            status = xml_file.generateSuccessTag();
+            output = xml_file.generateOutputTag();
+            Element cityList = xml_file.generateTag("cityList");
+            output.appendChild(cityList);
+
+            // create a new priority queue and add distances for all mapped cities
+
+            pq = new PriorityQueue<Distance>(new PQComparator());
+            for (String name : mapped) {
+                pq.add(new Distance(map1.get(name), coords));
+            }
+
+            System.out.println("2");
+
+
+            // find cities up to a certain radius
+
+            boolean within_radius = true;
+            while (within_radius) {
+
+                System.out.println("3");
+                City city = nearestCityHelper(x_param, y_param);
+                Distance d = new Distance(city, coords);
+                System.out.println("4");
+
+                if (d.getDistance() > radius) {
+                    within_radius = false;
+                }
+                else {
+
+                    HashMap< String,String> attributes = new HashMap< String,String>();
+                    attributes.put("name", city.getName());
+                    attributes.put("x", Integer.toString((int) city.get_x()));
+                    attributes.put("y", Integer.toString((int) city.get_y()));
+                    attributes.put("color", city.getColor());
+                    attributes.put("radius", Integer.toString(city.getRadius()));
+
+                    Element city_node = xml_file.generateTag("city", attributes);
+                    cityList.appendChild(city_node);
+                }
+            }
+        }
+
+        Element command = xml_file.generateCommandTag(commandNode.getTagName());
+        status.appendChild(command);
+        Element params = xml_file.generateTag("parameters");
+        status.appendChild(params);
+        Element x_node = xml_file.generateParameterTag("x", x_param);
+        Element y_node = xml_file.generateParameterTag("y", y_param);
+        Element radius_node = xml_file.generateParameterTag("radius", radius_param);
+        params.appendChild(x_node);
+        params.appendChild(y_node);
+        params.appendChild(radius_node);
+
+        if (no_error) {
+            status.appendChild(output);
+        }
+        return status;
     }
 
 
@@ -599,7 +694,77 @@ public class Mediator {
      * @return
      */
     public Element nearestCity(Element commandNode) {
-        return null;
+
+        Element status, output = null;
+        String x_param = commandNode.getAttribute("x");
+        String y_param = commandNode.getAttribute("y");
+        boolean no_error = true;
+
+        if (prqt.getRoot() instanceof WhiteNode) {
+            status = xml_file.generateErrorTag("mapIsEmpty");
+            no_error = false;
+        }
+        else {
+
+            status = xml_file.generateSuccessTag();
+
+            // get the nearest city and append that to the output
+
+
+            City city = nearestCityHelper(x_param, y_param);
+            output = xml_file.generateOutputTag();
+
+            HashMap< String,String> attributes = new HashMap< String,String>();
+            attributes.put("name", city.getName());
+            attributes.put("x", Integer.toString((int) city.get_x()));
+            attributes.put("y", Integer.toString((int) city.get_y()));
+            attributes.put("color", city.getColor());
+            attributes.put("radius", Integer.toString(city.getRadius()));
+
+            Element result = xml_file.generateTag("city", attributes);
+            output.appendChild(result);
+        }
+
+        Element command = xml_file.generateCommandTag(commandNode.getTagName());
+        status.appendChild(command);
+        Element params = xml_file.generateTag("parameters");
+        status.appendChild(params);
+        Element x_node = xml_file.generateParameterTag("x", x_param);
+        Element y_node = xml_file.generateParameterTag("y", y_param);
+        params.appendChild(x_node);
+        params.appendChild(y_node);
+
+        if (no_error) {
+            status.appendChild(output);
+        }
+        return status;
+    }
+
+
+    /**
+     * Helper function that calculates the nearest city to (x,y)
+     * @param x_str = x parameter
+     * @param y_str = y parameter
+     * @return
+     */
+    public City nearestCityHelper(String x_str, String y_str) {
+
+        int x = Integer.parseInt(x_str);
+        int y = Integer.parseInt(y_str);
+        Point2D.Float point = new Point2D.Float(x, y);
+
+        // create a priority queue
+        // create distance objects from all mapped cities and add them
+
+        PriorityQueue<Distance> pq = new PriorityQueue<Distance>(new PQComparator());
+
+        for (String name : mapped) {
+            Distance distance = new Distance(map1.get(name), point);
+            pq.add(distance);
+        }
+        Distance result = pq.poll();
+        pq.remove(result);
+        return result.getCity();
     }
 
 }

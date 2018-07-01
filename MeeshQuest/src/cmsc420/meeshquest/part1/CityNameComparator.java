@@ -1,5 +1,5 @@
 package cmsc420.meeshquest.part1;
-import java.util.*;
+import java.util.Comparator;
 
 /**
  * Comparator class for comparing city objects by name

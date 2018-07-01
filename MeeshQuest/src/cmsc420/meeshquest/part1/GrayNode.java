@@ -87,32 +87,32 @@ public class GrayNode extends PRQTNode {
         if (city_x < center_x && city_y >= center_y) {
 
             // quadrant 1
-            new_x = center.x - center.x/2;
-            new_y = center.y + center.y/2;
+            new_x = center.x - new_dim/2;
+            new_y = center.y + new_dim/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[0] = children[0].insert(city, new_center, new_dim);
         }
         else if (city_x >= center_x && city_y >= center_y) {
 
             // quadrant 2
-            new_x = center.x + center.x/2;
-            new_y = center.y + center.y/2;
+            new_x = center.x + new_dim/2;
+            new_y = center.y + new_dim/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[1] = children[1].insert(city, new_center, new_dim);
         }
         else if (city_x < center_x && city_y < center_y) {
 
             // quadrant 3
-            new_x = center.x - center.x/2;
-            new_y = center.y - center.y/2;
+            new_x = center.x - new_dim/2;
+            new_y = center.y - new_dim/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[2] = children[2].insert(city, new_center, new_dim);
         }
         else if (city_x >= center_x && city_y < center_y) {
 
             // quadrant 4
-            new_x = center.x + center.x/2;
-            new_y = center.y - center.y/2;
+            new_x = center.x + new_dim/2;
+            new_y = center.y - new_dim/2;
             new_center = new Point2D.Float(new_x, new_y);
             this.children[3] = children[3].insert(city, new_center, new_dim);
         }
