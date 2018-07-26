@@ -1,4 +1,4 @@
-package cmsc420.meeshquest.part2;
+package cmsc420.meeshquest.part1;
 import java.util.Comparator;
 
 /**

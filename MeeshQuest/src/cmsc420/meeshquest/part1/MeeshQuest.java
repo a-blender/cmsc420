@@ -1,6 +1,7 @@
-package cmsc420.meeshquest.part2;
+package cmsc420.meeshquest.part1;
 
 import java.io.IOException;
+import java.io.File;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -9,7 +10,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import cmsc420.xml.XmlUtility;
-import java.io.File;
 
 /**
  * MeeshQuest main class for the google maps project
@@ -21,12 +21,12 @@ public class MeeshQuest {
      * @param args
      */
     public static void main(String[] args) {
-
+    	
     	Document results = null;
 
         try {
-            // Document doc = XmlUtility.validateNoNamespace(System.in);
-            Document doc = XmlUtility.validateNoNamespace(new File("part2in.xml"));
+            Document doc = XmlUtility.validateNoNamespace(System.in);
+            //Document doc = XmlUtility.validateNoNamespace(new File("part1in2.xml"));
             results = XmlUtility.getDocumentBuilder().newDocument();
         
         	Element commandNode = doc.getDocumentElement();
