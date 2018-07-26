@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command id="1" name="createCity"/>
+    <parameters>
+      <name value="Berlin"/>
+      <x value="128"/>
+      <y value="128"/>
+      <radius value="0"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="Geneva"/>
+      <x value="90"/>
+      <y value="70"/>
+      <radius value="0"/>
+      <color value="orange"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="3" name="createCity"/>
+    <parameters>
+      <name value="Madrid"/>
+      <x value="45"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="yellow"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="4" name="createCity"/>
+    <parameters>
+      <name value="Andorra"/>
+      <x value="55"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="green"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="5" name="createCity"/>
+    <parameters>
+      <name value="London"/>
+      <x value="70"/>
+      <y value="140"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="6" name="createCity"/>
+    <parameters>
+      <name value="Edinburgh"/>
+      <x value="70"/>
+      <y value="165"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="7" name="createCity"/>
+    <parameters>
+      <name value="Athens"/>
+      <x value="200"/>
+      <y value="40"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="8" name="createCity"/>
+    <parameters>
+      <name value="Varna"/>
+      <x value="210"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="9" name="createCity"/>
+    <parameters>
+      <name value="Moscow"/>
+      <x value="220"/>
+      <y value="220"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="10" name="createCity"/>
+    <parameters>
+      <name value="St_Petersburg"/>
+      <x value="225"/>
+      <y value="225"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="11" name="createCity"/>
+    <parameters>
+      <name value="Stockholm"/>
+      <x value="140"/>
+      <y value="190"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="12" name="createCity"/>
+    <parameters>
+      <name value="Paris"/>
+      <x value="94"/>
+      <y value="98"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="13" name="createCity"/>
+    <parameters>
+      <name value="Zurich"/>
+      <x value="98"/>
+      <y value="94"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="14" name="createCity"/>
+    <parameters>
+      <name value="Lisbon"/>
+      <x value="20"/>
+      <y value="20"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="15" name="createCity"/>
+    <parameters>
+      <name value="Seville"/>
+      <x value="30"/>
+      <y value="10"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="16" name="createCity"/>
+    <parameters>
+      <name value="Warsaw"/>
+      <x value="200"/>
+      <y value="150"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="17" name="createCity"/>
+    <parameters>
+      <name value="Nantes"/>
+      <x value="75"/>
+      <y value="80"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="18" name="createCity"/>
+    <parameters>
+      <name value="Brussels"/>
+      <x value="100"/>
+      <y value="105"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="19" name="createCity"/>
+    <parameters>
+      <name value="Amsterdam"/>
+      <x value="110"/>
+      <y value="118"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="20" name="createCity"/>
+    <parameters>
+      <name value="Kiev"/>
+      <x value="240"/>
+      <y value="95"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="21" name="createCity"/>
+    <parameters>
+      <name value="Coppenhagen"/>
+      <x value="120"/>
+      <y value="140"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="22" name="createCity"/>
+    <parameters>
+      <name value="Prague"/>
+      <x value="130"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="23" name="createCity"/>
+    <parameters>
+      <name value="Milan"/>
+      <x value="100"/>
+      <y value="75"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="24" name="createCity"/>
+    <parameters>
+      <name value="Rome"/>
+      <x value="50"/>
+      <y value="120"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="25" name="createCity"/>
+    <parameters>
+      <name value="Minsk"/>
+      <x value="200"/>
+      <y value="160"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="26" name="createCity"/>
+    <parameters>
+      <name value="Istanbul"/>
+      <x value="250"/>
+      <y value="20"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="27" name="createCity"/>
+    <parameters>
+      <name value="Belgrade"/>
+      <x value="75"/>
+      <y value="220"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="28" name="createCity"/>
+    <parameters>
+      <name value="Helsinki"/>
+      <x value="150"/>
+      <y value="200"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="29" name="createCity"/>
+    <parameters>
+      <name value="Bergen"/>
+      <x value="120"/>
+      <y value="200"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="30" name="createCity"/>
+    <parameters>
+      <name value="Stavanger"/>
+      <x value="120"/>
+      <y value="190"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="31" name="createCity"/>
+    <parameters>
+      <name value="Oslo"/>
+      <x value="130"/>
+      <y value="190"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="32" name="createCity"/>
+    <parameters>
+      <name value="Trondheim"/>
+      <x value="130"/>
+      <y value="200"/>
+      <radius value="0"/>
+      <color value="blue"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="33" name="mapRoad"/>
+    <parameters>
+      <start value="Lisbon"/>
+      <end value="Madrid"/>
+    </parameters>
+    <output>
+      <roadCreated end="Madrid" start="Lisbon"/>
+    </output>
+  </success>
+  <success>
+    <command id="34" name="mapRoad"/>
+    <parameters>
+      <start value="Madrid"/>
+      <end value="Andorra"/>
+    </parameters>
+    <output>
+      <roadCreated end="Andorra" start="Madrid"/>
+    </output>
+  </success>
+  <success>
+    <command id="35" name="mapRoad"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Paris"/>
+    </parameters>
+    <output>
+      <roadCreated end="Paris" start="Milan"/>
+    </output>
+  </success>
+  <success>
+    <command id="36" name="mapRoad"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Zurich"/>
+    </parameters>
+    <output>
+      <roadCreated end="Zurich" start="Milan"/>
+    </output>
+  </success>
+  <success>
+    <command id="37" name="mapRoad"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Rome"/>
+    </parameters>
+    <output>
+      <roadCreated end="Rome" start="Milan"/>
+    </output>
+  </success>
+  <success>
+    <command id="38" name="mapRoad"/>
+    <parameters>
+      <start value="Paris"/>
+      <end value="Zurich"/>
+    </parameters>
+    <output>
+      <roadCreated end="Zurich" start="Paris"/>
+    </output>
+  </success>
+  <success>
+    <command id="39" name="mapRoad"/>
+    <parameters>
+      <start value="London"/>
+      <end value="Edinburgh"/>
+    </parameters>
+    <output>
+      <roadCreated end="Edinburgh" start="London"/>
+    </output>
+  </success>
+  <success>
+    <command id="40" name="mapRoad"/>
+    <parameters>
+      <start value="Paris"/>
+      <end value="Berlin"/>
+    </parameters>
+    <output>
+      <roadCreated end="Berlin" start="Paris"/>
+    </output>
+  </success>
+  <success>
+    <command id="41" name="mapRoad"/>
+    <parameters>
+      <start value="Berlin"/>
+      <end value="Warsaw"/>
+    </parameters>
+    <output>
+      <roadCreated end="Warsaw" start="Berlin"/>
+    </output>
+  </success>
+  <success>
+    <command id="42" name="mapRoad"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Andorra"/>
+    </parameters>
+    <output>
+      <roadCreated end="Andorra" start="Milan"/>
+    </output>
+  </success>
+  <success>
+    <command id="43" name="mapRoad"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Athens"/>
+    </parameters>
+    <output>
+      <roadCreated end="Athens" start="Milan"/>
+    </output>
+  </success>
+  <success>
+    <command id="44" name="mapRoad"/>
+    <parameters>
+      <start value="Athens"/>
+      <end value="Varna"/>
+    </parameters>
+    <output>
+      <roadCreated end="Varna" start="Athens"/>
+    </output>
+  </success>
+  <success>
+    <command id="45" name="mapRoad"/>
+    <parameters>
+      <start value="Stockholm"/>
+      <end value="Minsk"/>
+    </parameters>
+    <output>
+      <roadCreated end="Minsk" start="Stockholm"/>
+    </output>
+  </success>
+  <success>
+    <command id="46" name="mapRoad"/>
+    <parameters>
+      <start value="Moscow"/>
+      <end value="Stockholm"/>
+    </parameters>
+    <output>
+      <roadCreated end="Stockholm" start="Moscow"/>
+    </output>
+  </success>
+  <success>
+    <command id="47" name="mapRoad"/>
+    <parameters>
+      <start value="Moscow"/>
+      <end value="Kiev"/>
+    </parameters>
+    <output>
+      <roadCreated end="Kiev" start="Moscow"/>
+    </output>
+  </success>
+  <success>
+    <command id="48" name="mapRoad"/>
+    <parameters>
+      <start value="Varna"/>
+      <end value="Kiev"/>
+    </parameters>
+    <output>
+      <roadCreated end="Kiev" start="Varna"/>
+    </output>
+  </success>
+  <success>
+    <command id="49" name="mapRoad"/>
+    <parameters>
+      <start value="Moscow"/>
+      <end value="Helsinki"/>
+    </parameters>
+    <output>
+      <roadCreated end="Helsinki" start="Moscow"/>
+    </output>
+  </success>
+  <success>
+    <command id="50" name="mapRoad"/>
+    <parameters>
+      <start value="Oslo"/>
+      <end value="Stavanger"/>
+    </parameters>
+    <output>
+      <roadCreated end="Stavanger" start="Oslo"/>
+    </output>
+  </success>
+  <success>
+    <command id="51" name="shortestPath"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Minsk"/>
+      <saveHTML value="shortestPathPublic.output.fromMilanToMinsk"/>
+    </parameters>
+    <output>
+      <path hops="6" length="476.302">
+        <road end="Athens" start="Milan"/>
+        <left/>
+        <road end="Varna" start="Athens"/>
+        <right/>
+        <road end="Kiev" start="Varna"/>
+        <left/>
+        <road end="Moscow" start="Kiev"/>
+        <left/>
+        <road end="Stockholm" start="Moscow"/>
+        <left/>
+        <road end="Minsk" start="Stockholm"/>
+      </path>
+    </output>
+  </success>
+  <success>
+    <command id="52" name="mapRoad"/>
+    <parameters>
+      <start value="Varna"/>
+      <end value="Moscow"/>
+    </parameters>
+    <output>
+      <roadCreated end="Moscow" start="Varna"/>
+    </output>
+  </success>
+  <success>
+    <command id="53" name="shortestPath"/>
+    <parameters>
+      <start value="London"/>
+      <end value="London"/>
+    </parameters>
+    <output>
+      <path hops="0" length="0.000"/>
+    </output>
+  </success>
+  <success>
+    <command id="54" name="shortestPath"/>
+    <parameters>
+      <start value="Oslo"/>
+      <end value="Stavanger"/>
+    </parameters>
+    <output>
+      <path hops="1" length="10.000">
+        <road end="Stavanger" start="Oslo"/>
+      </path>
+    </output>
+  </success>
+  <success>
+    <command id="55" name="shortestPath"/>
+    <parameters>
+      <start value="Warsaw"/>
+      <end value="Athens"/>
+    </parameters>
+    <output>
+      <path hops="4" length="250.347">
+        <road end="Berlin" start="Warsaw"/>
+        <straight/>
+        <road end="Paris" start="Berlin"/>
+        <left/>
+        <road end="Milan" start="Paris"/>
+        <left/>
+        <road end="Athens" start="Milan"/>
+      </path>
+    </output>
+  </success>
+  <success>
+    <command id="56" name="shortestPath"/>
+    <parameters>
+      <start value="Varna"/>
+      <end value="Andorra"/>
+    </parameters>
+    <output>
+      <path hops="3" length="218.254">
+        <road end="Athens" start="Varna"/>
+        <right/>
+        <road end="Milan" start="Athens"/>
+        <left/>
+        <road end="Andorra" start="Milan"/>
+      </path>
+    </output>
+  </success>
+  <success>
+    <command id="57" name="shortestPath"/>
+    <parameters>
+      <start value="Milan"/>
+      <end value="Minsk"/>
+    </parameters>
+    <output>
+      <path hops="5" length="439.714">
+        <road end="Athens" start="Milan"/>
+        <left/>
+        <road end="Varna" start="Athens"/>
+        <straight/>
+        <road end="Moscow" start="Varna"/>
+        <left/>
+        <road end="Stockholm" start="Moscow"/>
+        <left/>
+        <road end="Minsk" start="Stockholm"/>
+      </path>
+    </output>
+  </success>
+</results>

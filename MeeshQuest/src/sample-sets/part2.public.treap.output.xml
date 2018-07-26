@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command id="1" name="createCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+      <x value="140"/>
+      <y value="37"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="printTreap"/>
+    <parameters/>
+    <output>
+      <treap cardinality="1">
+        <node key="Baltimore" priority="844902938" value="(140,37)">
+          <emptyChild/>
+          <emptyChild/>
+        </node>
+      </treap>
+    </output>
+  </success>
+  <success>
+    <command id="3" name="createCity"/>
+    <parameters>
+      <name value="Chicago"/>
+      <x value="133"/>
+      <y value="34"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="4" name="printTreap"/>
+    <parameters/>
+    <output>
+      <treap cardinality="2">
+        <node key="Baltimore" priority="844902938" value="(140,37)">
+          <node key="Chicago" priority="-1294899492" value="(133,34)">
+            <emptyChild/>
+            <emptyChild/>
+          </node>
+          <emptyChild/>
+        </node>
+      </treap>
+    </output>
+  </success>
+  <success>
+    <command id="5" name="createCity"/>
+    <parameters>
+      <name value="Atlanta"/>
+      <x value="278"/>
+      <y value="765"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="6" name="printTreap"/>
+    <parameters/>
+    <output>
+      <treap cardinality="3">
+        <node key="Atlanta" priority="1571433820" value="(278,765)">
+          <node key="Baltimore" priority="844902938" value="(140,37)">
+            <node key="Chicago" priority="-1294899492" value="(133,34)">
+              <emptyChild/>
+              <emptyChild/>
+            </node>
+            <emptyChild/>
+          </node>
+          <emptyChild/>
+        </node>
+      </treap>
+    </output>
+  </success>
+  <success>
+    <command id="7" name="clearAll"/>
+    <parameters/>
+    <output/>
+  </success>
+</results>

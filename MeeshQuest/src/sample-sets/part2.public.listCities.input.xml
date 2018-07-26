@@ -1,0 +1,14 @@
+<commands
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="part2in.xsd"
+ 	spatialWidth="512"
+ 	spatialHeight="512"
+ 	pmOrder="3">
+ <createCity id="1" name="Baltimore" y="39" x="76" radius="0" color="black"/>
+ <createCity id="2" name="Chicago" x="81" y="47" radius="0"  color="black"/>
+ <createCity id="3" name="Atlanta" x="84" y="33" radius="0"  color="black"/>
+ <createCity id="4" name="Los_Angeles" x="118" y="33" radius="0"  color="black"/>
+ <createCity id="5" name="Miami" x="80" y="25" radius="0"  color="black"/>
+ <createCity id="6" name="Boston" x="71" y="42" radius="0"  color="black"/>
+ <listCities id="7" sortBy="coordinate"/>
+</commands>

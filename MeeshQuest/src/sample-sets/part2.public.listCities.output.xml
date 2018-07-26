@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command id="1" name="createCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+      <x value="76"/>
+      <y value="39"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="Chicago"/>
+      <x value="81"/>
+      <y value="47"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="3" name="createCity"/>
+    <parameters>
+      <name value="Atlanta"/>
+      <x value="84"/>
+      <y value="33"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="4" name="createCity"/>
+    <parameters>
+      <name value="Los_Angeles"/>
+      <x value="118"/>
+      <y value="33"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="5" name="createCity"/>
+    <parameters>
+      <name value="Miami"/>
+      <x value="80"/>
+      <y value="25"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="6" name="createCity"/>
+    <parameters>
+      <name value="Boston"/>
+      <x value="71"/>
+      <y value="42"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="7" name="listCities"/>
+    <parameters>
+      <sortBy value="coordinate"/>
+    </parameters>
+    <output>
+      <cityList>
+        <city color="black" name="Miami" radius="0" x="80" y="25"/>
+        <city color="black" name="Atlanta" radius="0" x="84" y="33"/>
+        <city color="black" name="Los_Angeles" radius="0" x="118" y="33"/>
+        <city color="black" name="Baltimore" radius="0" x="76" y="39"/>
+        <city color="black" name="Boston" radius="0" x="71" y="42"/>
+        <city color="black" name="Chicago" radius="0" x="81" y="47"/>
+      </cityList>
+    </output>
+  </success>
+</results>

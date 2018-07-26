@@ -1,0 +1,32 @@
+<commands
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="part2in.xsd"
+	spatialWidth="1024"
+	spatialHeight="1024"
+	pmOrder="3">
+ <createCity name="Baltimore" x="140" y="37" radius="0" color="black"/>
+ <createCity name="Chicago" x="133" y="34" radius="0" color="black"/>
+ <createCity name="New_York" x="200" y="300" radius="0" color="black"/>
+ <createCity name="Zurich" x="1000" y="1000" radius="0" color="black"/>
+ <createCity name="Paris" x="500" y="400" radius="0" color="black"/>
+ <createCity name="Amsterdam" x="450" y="450" radius="0" color="black"/>
+ 
+ <nearestCity x="50" y="10"/>
+ 
+ <mapRoad start="Baltimore" end="Chicago"/>
+ <nearestCity x="100" y="100"/>
+ 
+ <mapRoad start="Chicago" end="New_York"/>
+ <nearestCity x="300" y="500"/>
+ 
+ <mapRoad start="New_York" end="Zurich"/>
+ <nearestCity x="10" y="10"/>
+ 
+ <mapRoad start="Zurich" end="Paris"/>
+ <nearestCity x="1000" y="1000"/>
+ 
+ <mapRoad start="Paris" end="Amsterdam"/>
+ <nearestCity x="500" y="500"/>
+ 
+ <saveMap name="part2.public.nearest"/>
+</commands>

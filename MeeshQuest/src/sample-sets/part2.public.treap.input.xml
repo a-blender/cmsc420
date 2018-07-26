@@ -1,0 +1,13 @@
+<commands
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="part2in.xsd"
+	pmOrder="3" spatialWidth="1024" spatialHeight="1024">
+
+ <createCity id="1"  name="Baltimore" y="37" x="140" radius="5" color="black"/>
+ <printTreap id="2"  />
+ <createCity id="3"  name="Chicago" x="133" y="34" radius="5"  color="black"/>
+ <printTreap id="4"  />
+ <createCity id="5"  name="Atlanta" x="278" y="765" radius="5"  color="black"/>
+ <printTreap id="6"  />
+ <clearAll id="7"  />
+</commands>

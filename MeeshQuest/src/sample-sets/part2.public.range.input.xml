@@ -1,0 +1,32 @@
+<commands
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="part2in.xsd"
+    spatialWidth="128"
+    spatialHeight="128"
+    pmOrder="3">
+ <createCity name="A1" x="1" y="50" radius="0" color="black"/>
+ <createCity name="A2" x="100" y="50" radius="0" color="black"/>
+ <createCity name="A3" x="50" y="50" radius="0" color="black"/>
+ <createCity name="A4" x="1" y="100" radius="0" color="black"/>
+ <createCity name="A5" x="50" y="100" radius="0" color="black"/>
+ <createCity name="A6" x="100" y="100" radius="0" color="black"/>
+ <createCity name="A7" x="105" y="105" radius="0" color="black"/>
+ 
+ <mapRoad start="A1" end="A2"/>
+ <mapRoad start="A1" end="A4"/>
+ <mapRoad start="A1" end="A5"/>
+ <mapRoad start="A1" end="A6"/>
+ 
+ <rangeCities x="50" y="50" radius="20" saveMap="part2.public.range.1"/>
+ 
+ <mapRoad start="A2" end="A6"/>
+ <mapRoad start="A4" end="A5"/>
+ <mapRoad start="A5" end="A6"/>
+ 
+ <rangeRoads x="100" y="100" radius="15" saveMap="part2.public.range.2"/>
+ 
+ <mapRoad start="A6" end="A7"/>
+ 
+ <rangeCities x="100" y="100" radius="10" saveMap="part2.public.range.3"/>
+ <rangeRoads x="1" y="50" radius="5" saveMap="part2.public.range.4"/>
+</commands>

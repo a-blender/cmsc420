@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A1"/>
+      <x value="1"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A2"/>
+      <x value="100"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A3"/>
+      <x value="50"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A4"/>
+      <x value="1"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A5"/>
+      <x value="50"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A6"/>
+      <x value="100"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A7"/>
+      <x value="105"/>
+      <y value="105"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A1"/>
+      <end value="A2"/>
+    </parameters>
+    <output>
+      <roadCreated end="A2" start="A1"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A1"/>
+      <end value="A4"/>
+    </parameters>
+    <output>
+      <roadCreated end="A4" start="A1"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A1"/>
+      <end value="A5"/>
+    </parameters>
+    <output>
+      <roadCreated end="A5" start="A1"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A1"/>
+      <end value="A6"/>
+    </parameters>
+    <output>
+      <roadCreated end="A6" start="A1"/>
+    </output>
+  </success>
+  <error type="noCitiesExistInRange">
+    <command name="rangeCities"/>
+    <parameters>
+      <x value="50"/>
+      <y value="50"/>
+      <radius value="20"/>
+      <saveMap value="part2.public.range.1"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A2"/>
+      <end value="A6"/>
+    </parameters>
+    <output>
+      <roadCreated end="A6" start="A2"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A4"/>
+      <end value="A5"/>
+    </parameters>
+    <output>
+      <roadCreated end="A5" start="A4"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A5"/>
+      <end value="A6"/>
+    </parameters>
+    <output>
+      <roadCreated end="A6" start="A5"/>
+    </output>
+  </success>
+  <success>
+    <command name="rangeRoads"/>
+    <parameters>
+      <x value="100"/>
+      <y value="100"/>
+      <radius value="15"/>
+      <saveMap value="part2.public.range.2"/>
+    </parameters>
+    <output>
+      <roadList>
+        <road end="A6" start="A5"/>
+        <road end="A6" start="A2"/>
+        <road end="A6" start="A1"/>
+      </roadList>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A6"/>
+      <end value="A7"/>
+    </parameters>
+    <output>
+      <roadCreated end="A7" start="A6"/>
+    </output>
+  </success>
+  <success>
+    <command name="rangeCities"/>
+    <parameters>
+      <x value="100"/>
+      <y value="100"/>
+      <radius value="10"/>
+      <saveMap value="part2.public.range.3"/>
+    </parameters>
+    <output>
+      <cityList>
+        <city color="black" name="A7" radius="0" x="105" y="105"/>
+        <city color="black" name="A6" radius="0" x="100" y="100"/>
+      </cityList>
+    </output>
+  </success>
+  <success>
+    <command name="rangeRoads"/>
+    <parameters>
+      <x value="1"/>
+      <y value="50"/>
+      <radius value="5"/>
+      <saveMap value="part2.public.range.4"/>
+    </parameters>
+    <output>
+      <roadList>
+        <road end="A6" start="A1"/>
+        <road end="A5" start="A1"/>
+        <road end="A4" start="A1"/>
+        <road end="A2" start="A1"/>
+      </roadList>
+    </output>
+  </success>
+</results>
