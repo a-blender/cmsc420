@@ -1,79 +1,49 @@
-package cmsc420.meeshquest.part1;
+package cmsc420.meeshquest.part2;
+
+import cmsc420.geom.Geometry2D;
 import java.awt.geom.Point2D;
 import java.util.Arrays;
-
+import java.util.ArrayList;
 
 /**
- * Class for a gray node in the PR Quadtree
- * Represents an internal node with four child nodes
+ * Class for a gray node in the PM Quadtree
+ * Represents an internal node with four children nodes
  */
 public class GrayNode extends PRQTNode {
-
 
     private Point2D.Float center;
     private int dim;
     private PRQTNode[] children;
 
-
-    /**
-     * Constructs an instance of the GrayNode class
-     * @param center = center coordinate
-     * @param dim = dimension of the node
-     * @param children = array of references to the four children nodes
-     */
     public GrayNode(Point2D.Float center, int dim, PRQTNode[] children) {
 
-        this.center = center;
-        this.dim = dim;
-        this.children = children;
+        this.center = center;           // center coordinate
+        this.dim = dim;                 // dimension of the node
+        this.children = children;       // array of references to four children nodes
     }
 
-
-    /**
-     * Gets the center coordinate of the gray node
-     * @return
-     */
     public Point2D.Float getCenter() {
-
         return this.center;
     }
 
-
-    /**
-     * Returns the dimension of the current gray node
-     * @return
-     */
     public int getDimension () {
-
         return this.dim;
     }
 
-
-    /**
-     * Returns the array with child node references
-     * @return
-     */
     public PRQTNode[] getChildren() {
-
         return this.children;
     }
 
-
+    // TO DO: finish modifying this function
     /**
-     * Inserts a node at a GrayNode into the PR Quadtree
-     * Basically: insert the node into the correct partition of the gray node
-     * @param city
-     * @param center
-     * @param dim
+     * Inserts a node at a gray node into the pm quadtree
+     * Step 1: insert the node into the correct partition of the gray node
+     * Step 2: insert road/roads into all the nodes they pass through
      * @return
      */
-    public PRQTNode insert(City city, Point2D.Float center, int dim) {
 
-        /*
-        1. Find out what quadrant the city to be added intersects
-        2. Assign to that child the return value of inserting the city
-        3. Ex: children[1] = children[1].insert(city)
-         */
+    /*
+    public PRQTNode insert(ArrayList<Geometry2D> geom, Point2D.Float center, int dim) {
 
         float new_x, new_y;             // (x, y) values of the node to return
         Point2D.Float new_center;       // center point of the node to return
@@ -118,64 +88,9 @@ public class GrayNode extends PRQTNode {
         }
 
         // return the gray node with the new city added
-
         return this;
-    }
+    } */
 
-
-    /**
-     * Deletes a city from the quadtree
-     * GrayNode - recursively "remove" city from the right child node
-     * @param city
-     * @return
-     */
-    public PRQTNode delete(City city) {
-
-        float city_x = city.get_x();
-        float city_y = city.get_y();
-        float center_x = this.getCenter().x;
-        float center_y = this.getCenter().y;
-
-        /*
-        Delete city from the correct child node
-        Code below - check quadrants 1-4 (in that order)
-         */
-
-        if (city_x < center_x && city_y >= center_y) {
-            this.children[0] = children[0].delete(city);
-        }
-        else if (city_x >= center_x && city_y >= center_y) {
-            this.children[1] = children[1].delete(city);
-        }
-        else if (city_x < center_x && city_y < center_y) {
-            this.children[2] = children[2].delete(city);
-        }
-        else if (city_x >= center_x && city_y < center_y) {
-            this.children[3] = children[3].delete(city);
-        }
-
-        // check to see if gray node can be condensed
-
-        boolean condense = true;
-        for (PRQTNode child_node : this.getChildren()) {
-            if (child_node instanceof BlackNode) {
-                condense = false;
-            }
-        }
-        if (condense) {
-            return new WhiteNode();
-        }
-
-        // if gray node can't be condensed, return the gray node
-
-        return this;
-    }
-
-
-    /**
-     * Returns a string representation of the GrayNode class
-     * @return
-     */
     @Override
     public String toString() {
         return "GrayNode{" +

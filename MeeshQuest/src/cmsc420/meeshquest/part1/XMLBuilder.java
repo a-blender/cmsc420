@@ -1,4 +1,4 @@
-package cmsc420.meeshquest.part1;
+package cmsc420.meeshquest.part2;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -41,9 +41,10 @@ public class XMLBuilder {
     }
 
 
-    public Element generateCommandTag(String commandName) {
+    public Element generateCommandTag(String commandName, String id) {
         Element tag = doc.createElement("command");
         tag.setAttribute("name", commandName);
+        tag.setAttribute("id", id);
         return tag;
     }
 

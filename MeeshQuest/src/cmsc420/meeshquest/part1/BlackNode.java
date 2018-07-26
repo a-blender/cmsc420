@@ -1,6 +1,8 @@
-package cmsc420.meeshquest.part1;
-import java.awt.geom.Point2D;
+package cmsc420.meeshquest.part2;
 
+import cmsc420.geom.Geometry2D;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 /**
  * Class for a black node in the PR Quadtree
@@ -8,89 +10,86 @@ import java.awt.geom.Point2D;
  */
 public class BlackNode extends PRQTNode {
 
+    private ArrayList<Geometry2D> geom;
 
-    private City city;
-
-
-    /**
-     * Constructs an instance of the BlackNode class
-     * @param city
-     */
-    public BlackNode(City city) {
-
-        this.city = city;
+    public BlackNode(ArrayList<Geometry2D> geom) {
+        this.geom = geom;
     }
 
-
-    /***
-     * Returns the city object associated with the node
-     */
-    public City getCity() {
-
-        return this.city;
+    public ArrayList<Geometry2D> getGeometry() {
+        return geom;
     }
 
+    public Geometry2D getCity() {
+        for (Geometry2D item : geom) {
+            if (item instanceof City) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Geometry2D> getRoads() {
+        ArrayList<Geometry2D> newList = new ArrayList<Geometry2D>();
+        for (Geometry2D item : geom) {
+            if (item instanceof Road) {
+                newList.add(item);
+            }
+        }
+        return newList;
+    }
 
     /**
-     * Inserts a city into the quadtree
-     * BlackNode - create a gray node and re-insert both cities into child nodes
-     * @param city
+     * Inserts a city (with roads, optional) into the pm quadtree
+     * BlackNode - add city/roads and return gray node that partitions correctly
+     * @param geom
      * @param center
      * @param dim
      * @return
      */
-    public PRQTNode insert(City city, Point2D.Float center, int dim) {
+    public PRQTNode insert(ArrayList<Geometry2D> geom, Point2D.Float center, int dim) {
 
-        /*
-        You need three things to create a gray node:
-        1. center point of the four quadrants
-        2. dimension of the gray node
-        3. array of child nodes
-         */
-
-        // Create an array of white nodes as children for the gray node
-
-        PRQTNode[] child_nodes = new PRQTNode[4];
-        for (int x = 0; x <= 3; x++) {
-            child_nodes[x] = new WhiteNode();
+        boolean addingCity = false;
+        for (Geometry2D item : geom) {
+            if (item instanceof City) addingCity = true;
         }
 
-        // Create the new gray node
+        // Option 1: only adding road/roads
 
-        PRQTNode gray_node = new GrayNode(center, dim, child_nodes);
-
-        // Re-insert the the black node that you replaced with the gray node
-        // Insert the new black node
-
-        gray_node.insert(this.city, center, dim);
-        gray_node.insert(city, center, dim);
-        return gray_node;
-    }
-
-
-    /**
-     * Deletes a city from the quadtree
-     * BlackNode - returns white node to remove city, or returns black node
-     * @param city
-     * @return
-     */
-    public PRQTNode delete(City city) {
-
-        if (this.getCity().equals(city)) {
-            return new WhiteNode();
+        if (!addingCity) {
+            this.geom.addAll(geom);
+            return this;
         }
-        else return this;
+
+        // Option 2: adding a city (with possibly more road/roads)
+
+        else {
+
+            // Option 2A: adding a city to a black node with no city
+            if (this.getCity() == null) {
+                this.geom.addAll(geom);
+                return this;
+            }
+
+            // Option 2B: adding a city to a black node that has a city
+            else {
+                PRQTNode[] child_nodes = new PRQTNode[4];
+                for (int x = 0; x <= 3; x++) {
+                    child_nodes[x] = new WhiteNode();
+                }
+
+                PRQTNode gray_node = new GrayNode(center, dim, child_nodes);
+                gray_node.insert(this.geom, center, dim);
+                gray_node.insert(geom, center, dim);
+                return gray_node;
+            }
+        }
     }
 
-
-    /**
-     * Returns a string representation of the BlackNode class
-     * @return
-     */
     @Override
     public String toString() {
         return "BlackNode{" +
-                "city=" + city +
+                "list=" + geom +
                 '}';
     }
 }
