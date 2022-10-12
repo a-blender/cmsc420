@@ -1,0 +1,63 @@
+<commands
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="part2in.xsd"
+        pmOrder="3"
+        spatialWidth="512"
+        spatialHeight="512">
+
+    <createCity id="1" name="Baltimore" x="200" y="0" radius="0" color="black"/>
+    <createCity id="2" name="Baltimore" x="81" y="47" radius="0"  color="black"/>
+    <createCity id="3" name="Atlanta" x="100" y="0" radius="0"  color="black"/>
+    <createCity id="4" name="Pittsburgh" x="300" y="0" radius="0"  color="black"/>
+    <createCity id="4" name="Johnny" x="200" y="100" radius="0"  color="black"/>
+    <createCity id="4" name="Amy" x="-1" y="20" radius="0"  color="black"/>
+    <createCity id="4" name="Amy2" x="-1" y="-1" radius="0"  color="black"/>
+    <createCity id="4" name="Amy3" x="-2" y="-2" radius="0"  color="black"/>
+
+    <printPMQuadtree id="9"/>
+
+    <mapCity name="Atlanta" />
+    <mapCity name="Pittsburgh" />
+    <mapCity name="Johnny" />
+
+    <printPMQuadtree/>
+    <clearAll/>
+
+    <createCity id="3" name="S" x="10" y="10" radius="0"  color="black"/>
+    <createCity id="4" name="B1" x="200" y="0" radius="0"  color="black"/>
+    <createCity id="4" name="A1" x="0" y="100" radius="0"  color="black"/>
+    <createCity id="4" name="A2" x="100" y="100" radius="0"  color="black"/>
+    <createCity id="4" name="A3" x="100" y="200" radius="0"  color="black"/>
+    <createCity id="4" name="E" x="200" y="200" radius="0"  color="black"/>
+
+    <mapRoad start="S" end="A1"/>
+    <mapRoad start="A1" end="A2"/>
+    <mapRoad start="A2" end="A3"/>
+    <mapRoad start="A3" end="E"/>
+    <mapRoad start="S" end="B1"/>
+    <mapRoad start="E" end="B1"/>
+
+    <printPMQuadtree/>
+
+    <createCity name="Z1" x="400" y="400" radius="1" color="red"/>
+    <createCity name="Z2" x="350" y="360" radius="1" color="red"/>
+    <createCity name="Z3" x="360" y="370" radius="1" color="red"/>
+    <createCity name="Z4" x="370" y="380" radius="1" color="red"/>
+    <createCity name="Z5" x="410" y="320" radius="1" color="red"/>
+    <createCity name="Z6" x="290" y="405" radius="1" color="red"/>
+    <createCity name="Z7" x="500" y="501" radius="1" color="red"/>
+
+    <mapRoad start="Z1" end="Z2"/>
+    <mapRoad start="Z2" end="Z3"/>
+    <mapRoad start="Z2" end="Z4"/>
+    <mapRoad start="Z2" end="Z5"/>
+    <mapRoad start="Z3" end="Z1"/>
+    <mapRoad start="Z3" end="Z2"/>
+    <mapRoad start="Z3" end="Z4"/>
+    <mapRoad start="Z3" end="Z7"/>
+    <mapRoad start="Z5" end="Z6"/>
+    <mapRoad start="Z5" end="Z7"/>
+
+    <printPMQuadtree/>
+
+</commands>

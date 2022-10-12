@@ -1,0 +1,10 @@
+<commands
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="part2in.xsd"
+        pmOrder="3"
+        spatialWidth="512"
+        spatialHeight="512">
+
+
+    <printTreap/>
+</commands>
